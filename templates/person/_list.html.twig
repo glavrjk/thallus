@@ -1,0 +1,59 @@
+<table class="table display table-sm responsive table-striped table-no-bordered table-hover" style="width: 100%;" data-widget="datatable">
+	<thead>
+		<tr>
+			<th class="text-uppercase text-secondary font-weight-bolder opacity-7 text-center">ID</th>
+			<th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">RUT</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Nombre</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Apellido</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Fecha de Nacimiento</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Nacionalidad</th>			
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7 text-center">Empresas</th>
+			<th class="text-secondary opacity-7"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for person in people %}
+			<tr>
+				<td class="text-center">
+					{{ person.id}}
+				</td>
+				<td>
+					{{ person.rut }}
+				</td>
+				<td class="align-middle text-center text-sm">
+					{{ person.name }}
+				</td>
+				<td class="align-middle text-center text-sm">
+					{{ person.lastName }}
+				</td>
+				<td class="align-middle text-center text-sm">
+					{{ (person.birthday) ? person.birthday|date("d/m/Y") : '' }}
+				</td>
+				<td class="align-middle text-center text-sm">
+					{{ person.country }}
+				</td>
+				<td class="align-middle text-center">
+					<span class="badge rounded-pill bg-primary">{{ person.company|length }}</span>
+				</td>
+				<td class="d-flex align-middle justify-content-center">
+					<div {{ stimulus_controller('modal-form', { formUrl: path('person_edit', {'id': person.id} ) } ) }} data-action="hidden.bs.modal->modal-form#modalHidden">
+						<a class="btn btn-warning btn-fab btn-round m-0" data-action="modal-form#openModal">
+							<i class="material-icons">edit</i>
+						</a>
+						{{ include('skeleton/components/_modal.html.twig', { modalTitle: 'Modificar Empresa', } ) }}
+					</div>
+					<form method="post" action="{{ path('person_delete', {'id': person.id}) }}">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ person.id) }}">
+						<a class="btn btn-danger btn-fab btn-round m-0 btn-delete">
+							<i class="material-icons">delete</i>
+						</a>
+					</form>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="8" class="text-center">Sin Registros</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>

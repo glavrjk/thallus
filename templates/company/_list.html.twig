@@ -1,0 +1,47 @@
+<table class="table display table-sm responsive table-striped table-no-bordered table-hover" style="width: 100%;" data-widget="datatable">
+	<thead>
+		<tr>
+			<th class="text-uppercase text-secondary font-weight-bolder opacity-7 text-center">ID</th>
+			<th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">Tipo</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">Nombre</th>
+			<th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7 text-center">Personas</th>
+			<th class="text-secondary opacity-7"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for company in companies %}
+			<tr>
+				<td class="text-center">
+					{{ company.id}}
+				</td>
+				<td>
+					{{ company.type }}
+				</td>
+				<td class="align-middle text-center text-sm">
+					{{ company.name }}
+				</td>
+				<td class="align-middle text-center">
+					<span class="badge rounded-pill bg-primary">{{ company.person|length }}</span>
+				</td>
+				<td class="d-flex align-middle justify-content-center">
+					<div {{ stimulus_controller('modal-form', { formUrl: path('company_edit', {'id': company.id} ) } ) }} data-action="hidden.bs.modal->modal-form#modalHidden">
+						<a class="btn btn-warning btn-fab btn-round m-0" data-action="modal-form#openModal">
+							<i class="material-icons">edit</i>
+						</a>
+						{{ include('skeleton/components/_modal.html.twig', { modalTitle: 'Modificar Empresa', } ) }}
+					</div>
+					<form method="post" action="{{ path('company_delete', {'id': company.id}) }}">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ company.id) }}">
+						<a class="btn btn-danger btn-fab btn-round m-0 btn-delete">
+							<i class="material-icons">delete</i>
+						</a>
+					</form>
+				</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="4" class="text-center">Sin Registros</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>

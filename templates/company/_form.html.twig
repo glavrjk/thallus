@@ -1,0 +1,18 @@
+{{ form_start(form, { attr : { role : "form", 'method' : 'POST'} }) }}
+<div class="input-group input-group-outline my-3">
+	{{ form_label(form.type) }}
+	{{ form_widget(form.type, {'attr': {'class': (form.type.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.type) }}
+</div>
+<div class="input-group input-group-outline mb-3">
+	{{ form_label(form.name) }}
+	{{ form_widget(form.name, {'attr': {'class': (form.name.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.name) }}
+</div>
+<div class="col-12">
+	{{ form_label(form.person) }}
+	{{ form_widget(form.person, {'attr': {'class': (form.person.errors is defined) ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.person) }}
+</div>
+{{ form_widget(form) }}
+{{ form_end(form) }}

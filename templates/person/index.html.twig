@@ -1,0 +1,37 @@
+{% extends 'skeleton/layout.html.twig' %}
+
+{% block title %}Personas
+{% endblock %}
+
+{% block body %}
+	{# Llamada al Controlador Front-End ./assets/controllers/reload-content_controller.js para Actualizar Datatable #}
+	<div class="row" {{ stimulus_controller('reload-content', { url: path('person_index') } ) }} data-action="modal-form:success->reload-content#refreshContent">
+		<div class="col-12">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-secondary shadow-secondary border-radius-lg pt-4 pb-3">
+						<span class="h4 text-white text-capitalize ps-3">PERSONAS</span>
+					</div>
+				</div>
+				{# Llamada al Controlador Front-End ./assets/controllers/reload-content_controller.js para Renderizar Formulario en Modal #}
+				<div {{ stimulus_controller('modal-form', { formUrl: path('person_new') } ) }} data-action="hidden.bs.modal->modal-form#modalHidden">
+					<button class="btn btn-success btn-sm float-end" style="margin-top: -50px; margin-right: 25px; z-index: 50;" data-action="modal-form#openModal">
+						<span class="material-icons">
+							add
+						</span>
+					</button>
+					{{ include('skeleton/components/_modal.html.twig', { modalTitle: 'Añadir Persona', } ) }}
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-12">
+							<div data-reload-content-target="content">
+								{{ include('person/_list.html.twig') }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+<div class="collapse navbar-collapse w-auto max-height-vh-100" id="sidenav-collapse-main">
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<a class="nav-link text-white active {{ (app.request.get('_route')=='app_dashboard' ) ? 'bg-gradient-primary' : '' }}" href="{{ path('app_dashboard') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">dashboard</i>
+				</div>
+				<span class="nav-link-text ms-1">Dashboard</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (app.request.get('_route')=='person_index' ) ? 'bg-gradient-primary' : '' }}" href="{{ path('person_index') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">people</i>
+				</div>
+				<span class="nav-link-text ms-1">Personas</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white {{ (app.request.get('_route')=='company_index' ) ? 'bg-gradient-primary' : '' }}" href="{{ path('company_index') }}">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">business</i>
+				</div>
+				<span class="nav-link-text ms-1">Empresas</span>
+			</a>
+		</li>
+		<li class="nav-item mt-3">
+			<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white " href="../pages/profile.html">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">manage_accounts</i>
+				</div>
+				<span class="nav-link-text ms-1">Profile</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white " href="../pages/sign-in.html">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">login</i>
+				</div>
+				<span class="nav-link-text ms-1">Sign In</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white " href="../pages/sign-up.html">
+				<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="material-icons opacity-10">assignment</i>
+				</div>
+				<span class="nav-link-text ms-1">Sign Up</span>
+			</a>
+		</li>
+	</ul>
+</div>

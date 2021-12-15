@@ -1,0 +1,33 @@
+{{ form_start(form, { attr : { role : "form", 'method' : 'POST'} }) }}
+<div class="input-group input-group-outline my-3">
+	{{ form_label(form.rut) }}
+	{{ form_widget(form.rut, {'attr': {'class': (form.rut.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.rut) }}
+</div>
+<div class="input-group input-group-outline mb-3">
+	{{ form_label(form.name) }}
+	{{ form_widget(form.name, {'attr': {'class': (form.name.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.name) }}
+</div>
+<div class="input-group input-group-outline mb-3">
+	{{ form_label(form.lastName) }}
+	{{ form_widget(form.lastName, {'attr': {'class': (form.lastName.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.lastName) }}
+</div>
+<div class="input-group input-group-outline mb-3">
+	{{ form_label(form.birthday) }}
+	{{ form_widget(form.birthday, {'attr': {'class': (form.birthday.errors is defined)  ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.birthday) }}
+</div>
+<div class="col-12">
+	{{ form_label(form.country) }}
+	{{ form_widget(form.country, {'attr': {'class': (form.person.errors is defined) ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.country) }}
+</div>
+<div class="col-12">
+	{{ form_label(form.company) }}
+	{{ form_widget(form.company, {'attr': {'class': (form.person.errors is defined) ? ' is-invalid' : '' } }) }}
+	{{ form_errors(form.company) }}
+</div>
+{{ form_widget(form) }}
+{{ form_end(form) }}

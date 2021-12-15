@@ -1,0 +1,33 @@
+// Gradient colors
+$primary: #9DDCA9 !default;
+$secondary: #888079 !default;
+// Gradient colors
+$primary-gradient: #9DDCA9 !default;
+$primary-gradient-state: #65C878 !default;
+$secondary-gradient: #888079 !default;
+$secondary-gradient-state: #6C6660 !default;
+
+@import '/node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css';
+@import '/node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.css';
+@import '/node_modules/sweetalert2/dist/sweetalert2.css';
+@import "~material-dashboard/assets/scss/material-dashboard";
+
+.modal-body button {
+    display: none;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: $primary !important;
+}
+
+.btn.btn-fab,
+.btn.btn-just-icon {
+    font-size: 1.5rem;
+    height: 2.5625rem;
+    min-width: 2.5625rem;
+    width: 2.5625rem;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    line-height: 2.5625rem;
+}
