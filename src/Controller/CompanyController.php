@@ -9,9 +9,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/empresas')]
+#[IsGranted('ROLE_USER')]
 class CompanyController extends AbstractController {
 
     #[Route('/', name: 'company_index', methods: ['GET'])]
@@ -65,7 +67,7 @@ class CompanyController extends AbstractController {
     }
 
     #[Route('/{id}/eliminar', name: 'company_delete', methods: ['POST'])]
-    public function delete(Request $request, Company $company, EntityManagerInterface $entityManager): Response {       
+    public function delete(Request $request, Company $company, EntityManagerInterface $entityManager): Response {
         if ($this->isCsrfTokenValid('delete' . $company->getId(), $request->request->get('_token'))) {
             $entityManager->remove($company);
             $entityManager->flush();

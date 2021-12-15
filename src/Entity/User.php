@@ -35,6 +35,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=false)     
+     */
+    private $enabled = true;
+
     public function getId(): ?int {
         return $this->id;
     }
@@ -63,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     public function getRoles(): array {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // $roles[] = 'ROLE_USER';
         return array_unique($roles);
     }
 
@@ -92,5 +97,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface {
     public function eraseCredentials() {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * Get the value of enabled
+     */
+    public function getEnabled() {
+        return $this->enabled;
+    }
+
+    /**
+     * Set the value of enabled
+     *
+     * @return  self
+     */
+    public function setEnabled($enabled) {
+        $this->enabled = $enabled;
+        return $this;
     }
 }

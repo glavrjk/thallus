@@ -28,7 +28,7 @@ class UserChecker implements UserCheckerInterface {
         }
         // user account is expired, the user may be notified
         if (!$user->getEnabled()) {
-            throw new CustomUserMessageAccountStatusException('account.not_enabled');
+            throw new CustomUserMessageAccountStatusException('Su cuenta fue suspendida, por favor comuníquese con nosotros');
         }
     }
 }
