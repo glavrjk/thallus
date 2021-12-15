@@ -9,6 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('', name: 'app_')]
 class DefaultController extends AbstractController {
 
+     /**
+     * Dashboard Page
+     * @return Response
+     */
+    #[Route('/', name: 'index')]
+    public function index(): Response {
+        return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
+    }
+
     /**
      * Dashboard Page
      * @return Response
