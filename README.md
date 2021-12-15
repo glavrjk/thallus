@@ -112,6 +112,11 @@ $ php bin/console doctrine:database:create
 ``` 
 > **Agregando Datos de Prueba:**
 > Ejecutar el Archivo SQL que se encuentra en ./src/DataFixtures/country.sql
-``` 
+> Ejecutar el Archivo SQL que se encuentra en ./src/DataFixtures/user.sql
+
+> **Datos de Acceso:**
+> usuario: admin
+> contraseña: a1b2c3$
+
 ## Desarrollado Por:
 * Ing. Gilberto Carrillo <glavrjk@gmail.com>
