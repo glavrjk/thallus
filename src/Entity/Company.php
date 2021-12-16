@@ -87,7 +87,8 @@ class Company {
     }
 
     public function removePerson(Person $person): self {
-        if ($this->person->removeElement($person)) {
+        if ($this->person->contains($person)) {
+            $this->person->removeElement($person);
             $person->removeCompany($this);
         }
 

@@ -63,7 +63,7 @@ class Person {
     }
 
     public function __toString() {
-        return $this->lastName.' '.$this->name;
+        return $this->lastName . ' ' . $this->name;
     }
 
     public function getId(): ?int {
@@ -120,14 +120,16 @@ class Person {
     public function addCompany(Company $company): self {
         if (!$this->company->contains($company)) {
             $this->company[] = $company;
+            $company->addPerson($this);
         }
-
         return $this;
     }
 
     public function removeCompany(Company $company): self {
-        $this->company->removeElement($company);
-
+        if ($this->company->contains($company)) {
+            $this->company->removeElement($company);
+            $company->removePerson($this);
+        }
         return $this;
     }
 
